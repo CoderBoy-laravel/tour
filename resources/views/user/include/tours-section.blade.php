@@ -35,7 +35,7 @@
 
 
         @foreach ($uaetourdata as $datatour)
-
+            //are you thereye ok
 
             <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
                 <div class="tour_container">
