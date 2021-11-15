@@ -129,6 +129,7 @@ h3 {
     font-size: 16px;
     margin-bottom: 30px;
 }
+
 .main_title h2 {
     text-transform: uppercase;
     font-weight: 700;
@@ -318,6 +319,18 @@ a.btn_1.white:hover,
     background: #333;
     color: #fff;
 }
+.desc {
+    font-size: 16px !important;
+}
+.uae-tours {
+    text-align: left;
+    display: block;
+    background-color: #e9e9e9;
+    cursor: pointer;
+    margin-top: -20px !important;
+    margin: 20px auto;
+    padding: 30px 40px;
+}
 
 a.btn_1.outline,
 .btn_1.outiline,
@@ -326,6 +339,10 @@ input .btn_1.outiline {
     background: none;
     border: 2px solid #555;
     padding: 5px 18px;
+    width: 100% !important;
+    text-align: center !important;
+    font-size: 16px !important;
+    text-align: left;
 }
 a.btn_1.outline:hover,
 .btn_1.outiline:hover,
@@ -481,6 +498,8 @@ header {
     top: 0;
     z-index: 99999;
     padding: 10px 0;
+    /* background: #67d70f; */
+    background-color: #000000;
 }
 header#plain {
     background-color: #fff;
@@ -582,9 +601,11 @@ ul#top_tools {
     list-style: none;
     padding: 0;
     position: absolute;
-    right: 15px;
+
     top: 0;
     z-index: 999;
+    right: 8% !important;
+    margin-top: 29px !important;
 }
 ul#top_tools a {
     color: #fff;
@@ -605,6 +626,7 @@ ul#top_tools li i {
 }
 
 #top_line {
+    display: none;
     color: #fff;
     height: 28px;
     font-size: 12px;
@@ -875,7 +897,8 @@ footer {
 }
 
 footer h3 {
-    font-size: 13px;
+    font-family: "Lato", sans-serif !important;
+    font-size: 20px;
     font-weight: 600;
     color: #fff;
     text-transform: uppercase;
@@ -884,10 +907,11 @@ footer h3 {
 
 footer a {
     color: #fff;
+    font-size: 17px !important;
 }
 
 footer a:hover {
-    color: #999;
+    color: rgb(19, 230, 29) !important;
 }
 
 footer ul {
@@ -907,8 +931,8 @@ footer ul li {
 }
 
 #social_footer p {
-    font-size: 12px;
-    color: #8c8c8c;
+    font-size: 17px;
+    color: rgb(19, 230, 29) !important;
 }
 
 #social_footer ul {
@@ -927,7 +951,7 @@ footer ul li {
     text-align: center;
     line-height: 35px;
     display: block;
-    font-size: 16px;
+    font-size: 25px !important;
     width: 35px;
     height: 35px;
     -webkit-border-radius: 50%;
@@ -996,6 +1020,8 @@ a#email_footer:before {
     margin-bottom: 0;
     margin: 0;
     padding: 0;
+    margin-top: -16px !important;
+    font-size: 16px !important;
 }
 
 /* Submenu styles */
@@ -1008,7 +1034,7 @@ a#email_footer:before {
 /*First level styles */
 .main-menu > ul > li > a {
     color: #fff;
-    padding: 0 8px 15px 8px;
+    padding: 0 8px 25px 8px !important;
     font-size: 13px;
     font-weight: 600;
 }
@@ -1200,12 +1226,12 @@ a.dropdown-toggle.icon-search {
     }
 
     .main-menu ul .menu-wrapper h3 {
-        font-size: 13px;
+        font-size: 14px;
         text-transform: uppercase;
         border-bottom: 2px solid #ededed;
         padding-bottom: 10px;
         margin-bottom: 0;
-        font-weight: 600;
+        font-weight: 800;
     }
 
     /* Submenu 3rd level */
@@ -1604,9 +1630,10 @@ a.dropdown-toggle.icon-search {
 .intro_title h3 {
     font-size: 45px;
     margin-bottom: 5px;
-    color: #fff;
+    color: #6fe315 !important;
     font-weight: bold;
     text-transform: uppercase;
+    font-family: "Ubuntu", sans-serif;
 }
 
 .intro_title h3 strong span {
@@ -2192,21 +2219,23 @@ a#filters_col_bt .icon_set_1_icon-65 {
 }
 
 #price_single_main {
-    padding-top: 10px;
-    text-align: right;
+    text-align: left;
     font-weight: normal;
     line-height: 1;
+    margin-left: 30%;
+    margin-left: 60%;
 }
 
 #price_single_main span {
-    font-size: 60px;
-    color: #3cf;
+    font-size: 25px;
+    color: #0a834b;
+    font-weight: 500;
 }
 
 #price_single_main sup {
-    font-size: 22px;
+    font-size: 12px;
     position: relative;
-    top: -25px;
+    top: -12px;
 }
 
 #price_single {
@@ -3685,7 +3714,7 @@ ul.list_order li span {
 
 /* Margin tools */
 .margin_60 {
-    padding-top: 60px;
+    padding-top: 20px;
     padding-bottom: 60px;
 }
 
@@ -3773,6 +3802,10 @@ ul.list_order li span {
 .tour_container .tour_title {
     padding: 15px 15px 10px 15px;
     position: relative;
+    background: #141d2b;
+    color: white;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 .tour_container .tour_title .rating {
@@ -8584,4 +8617,126 @@ a.box_news ul li:after {
         padding: 5px 8px;
     }
 }
+
 /* END MEDIA QUERIES max-width 480px - MOBILE PORTRAIT  */
+/* OWN STYLE */
+
+.res {
+    margin: auto;
+    width: 50% !important;
+    border-radius: 10px;
+    border: 2px solid #6fe316;
+    display: inline-flex;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+}
+
+res img {
+    margin-top: 8.5px;
+    margin-left: 5px;
+}
+
+res span {
+    display: block;
+    display: inline;
+}
+price {
+    border-right: 2px solid red;
+}
+.res .country a {
+    font-size: 16px;
+    font-size: 27px !important;
+    color: white;
+    font-weight: 700 !important;
+    -webkit-animation: h2 0.35s infinite;
+    animation: h2 0.35s infinite;
+}
+.tour {
+    padding-right: 10%;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes h1 {
+    0% {
+        text-shadow: 0 0 3px #ff0000;
+        color: #fff;
+    }
+    25% {
+        text-shadow: 0 0 12px #ff0000;
+    }
+    50% {
+        text-shadow: 0 0 20px #ff0000;
+        color: pink;
+    }
+    75% {
+        text-shadow: 0 0 12px #ff0000;
+    }
+    100% {
+        text-shadow: 0 0 3px #ff0000;
+        color: #fff;
+    }
+}
+
+@-webkit-keyframes h2 {
+    0% {
+        text-shadow: 0 0 6px #fff;
+    }
+    100% {
+        text-shadow: 0 0 0px #000;
+    }
+}
+
+/* Internet Explorer */
+
+@keyframes h1 {
+    0% {
+        text-shadow: 0 0 3px #ff0000;
+        color: #fff;
+    }
+    25% {
+        text-shadow: 0 0 12px #ff0000;
+    }
+    50% {
+        text-shadow: 0 0 20px #ff0000;
+        color: pink;
+    }
+    75% {
+        text-shadow: 0 0 12px #ff0000;
+    }
+    100% {
+        text-shadow: 0 0 3px #ff0000;
+        color: #fff;
+    }
+}
+
+@keyframes h2 {
+    0% {
+        text-shadow: 0 0 6px #fff;
+    }
+    100% {
+        text-shadow: 0 0 0px #000;
+    }
+}
+/* font Awesome Stylling */
+.fa,
+.fas {
+    font-weight: 900;
+    font-size: 18px;
+    color: #6fe315;
+    padding: 0px 8px 0px 8px;
+}
+/* INDEX PAGE TOUR DESCRIPTION  */
+.tour-description-title {
+    font-size: 18px;
+    padding-top: 5px;
+    text-align: left;
+    color: white;
+    margin-bottom: -15px;
+}
+.travel-date {
+    font-size: 18px;
+    padding-top: 15px;
+    text-align: left;
+    color: #6fe315;
+}
