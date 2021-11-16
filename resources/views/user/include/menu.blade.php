@@ -425,28 +425,28 @@
                     </ul>
                 </div><!-- End main-menu -->
                 <ul id="top_tools">
-
+                    @php
+                        $cart = App\Models\Cart::where('user_ip', $_SERVER['REMOTE_ADDR'])->get();
+                        $price = 0;
+                        foreach ($cart as $key => $item) {
+                            $price = $price + $item->price;
+                        }
+                    @endphp
                     <li>
                         <div class="dropdown dropdown-cart">
-                            <a href="#" data-toggle="dropdown" class="cart_bt"><i class="icon_bag_alt"></i><strong>3</strong></a>
+                            <a href="#" data-toggle="dropdown" class="cart_bt"><i class="icon_bag_alt"></i><strong>{{ $cart->count() }}</strong></a>
                             <ul class="dropdown-menu" id="cart_items">
+
+                                @foreach ($cart as $key => $item)
+                                    <li>
+                                        <div class="image"><img src="{{ url('/') }}/uaetoursimage/{{ $item->image }}" alt="image"></div>
+                                        <strong><a href="#">{{ $item->name }}</a>{{ $item->price }} </strong>
+                                        <a href="#" class="action"><i class="icon-trash"></i></a>
+                                    </li>
+
+                                @endforeach
                                 <li>
-                                    <div class="image"><img src="img/thumb_cart_1.jpg" alt="image"></div>
-                                    <strong><a href="#">Louvre museum</a>1x $36.00 </strong>
-                                    <a href="#" class="action"><i class="icon-trash"></i></a>
-                                </li>
-                                <li>
-                                    <div class="image"><img src="img/thumb_cart_2.jpg" alt="image"></div>
-                                    <strong><a href="#">Versailles tour</a>2x $36.00 </strong>
-                                    <a href="#" class="action"><i class="icon-trash"></i></a>
-                                </li>
-                                <li>
-                                    <div class="image"><img src="img/thumb_cart_3.jpg" alt="image"></div>
-                                    <strong><a href="#">Versailles tour</a>1x $36.00 </strong>
-                                    <a href="#" class="action"><i class="icon-trash"></i></a>
-                                </li>
-                                <li>
-                                    <div>Total: <span>$120.00</span></div>
+                                    <div>Total: <span>{{ $price }}</span></div>
                                     <a href="cart.html" class="button_drop">Go to cart</a>
                                     <a href="payment.html" class="button_drop outline">Check out</a>
                                 </li>

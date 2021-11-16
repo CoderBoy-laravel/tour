@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\inclusions;
 use App\Models\itinery;
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Uaetoursproduct;
+use Carbon\Carbon;
 use PhpParser\Builder\Function_;
 use PhpParser\Node\Expr\FuncCall;
 
@@ -161,8 +163,75 @@ class AdminController extends Controller
 
         return redirect()->back()->with('message', 'Tour Updated Succesfully ');
     }
- 
-    public function cart(Request $request, $id )
+
+    public function cart(Request $request) {
+        $seat_price = 400;
+        $insurance_price = 100;
+        $price = Uaetoursproduct::findOrFail($request->tour_id)->price;
+        if ($request->persons_select != null) {
+            $price = $price * $request->persons_select;
+        }
+        if ($request->seat_select != null) {
+            $price = $price + ($seat_price * $request->seat_select);
+        }
+        if ($request->insurance_select != null) {
+            $price = $price + ($insurance_price * $request->insurance_select);
+        }
+        $name = Uaetoursproduct::findOrFail($request->tour_id)->title;
+        $image = Uaetoursproduct::findOrFail($request->tour_id)->image;
+
+        $data = new cart;
+        $data->tour_id = $request->tour_id;
+        $data->user_ip = $request->ip();
+        $data->name = $name;
+        $data->image = $image;
+        $data->persons_select = $request->persons_select;
+        $data->insurance_select = $request->insurance_select;
+        $data->addon_select1 = $request->addon_select1;
+        $data->addon_select2 = $request->addon_select2;
+        $data->price = $price;
+        $data->created_at = Carbon::now();
+        $data->save();
+
+        //redirect to back page
+        return back();
+
+    }
+
+
+    public function book(Request $request) {
+        $seat_price = 400;
+        $insurance_price = 100;
+        $price = Uaetoursproduct::findOrFail($request->tour_id)->price;
+        if ($request->persons_select != null) {
+            $price = $price * $request->persons_select;
+        }
+        if ($request->seat_select != null) {
+            $price = $price + ($seat_price * $request->seat_select);
+        }
+        if ($request->insurance_select != null) {
+            $price = $price + ($insurance_price * $request->insurance_select);
+        }
+        $name = Uaetoursproduct::findOrFail($request->tour_id)->title;
+        $image = Uaetoursproduct::findOrFail($request->tour_id)->image;
+
+        $data = new cart;
+        $data->tour_id = $request->tour_id;
+        $data->user_ip = $request->ip();
+        $data->name = $name;
+        $data->image = $image;
+        $data->persons_select = $request->persons_select;
+        $data->insurance_select = $request->insurance_select;
+        $data->addon_select1 = $request->addon_select1;
+        $data->addon_select2 = $request->addon_select2;
+        $data->price = $price;
+        $data->created_at = Carbon::now();
+       // $data->save();
+
+        // redirect to checkout page
+        // return back();
+
+    }
 
 
     // public function search(Request $request)

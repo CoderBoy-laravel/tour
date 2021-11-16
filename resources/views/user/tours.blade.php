@@ -253,7 +253,7 @@
                 <!--End  single_tour_desc-->
 
                 <aside class="col-lg-4">
-                    <form action="{{ url('cart') }}" method="post">
+                    <form action="{{ url('cart') }}" method="post" id="tocheckout">
                         <div class="box_style_1 expose">
                             <h3 class="inner">- Booking -</h3>
                             <div class="">
@@ -263,8 +263,9 @@
                                         {{ $data->price }}</span>
                                 </div>
                             </div>
-
+                            @csrf
                             <!--Travellers Adon-->
+                            <input name="tour_id" hidden value="{{ $data->id }}">
                             <div class="row">
                                 <label style="text-align:;margin-left:15px;margin-right:12px;
                             ">SELECT NUMBERS OF TRAVELLERS</label>
@@ -273,11 +274,11 @@
                                     <div class="form-group">
 
                                     </div>
-                                    <select id="persons-select" class="form-select"
+                                    <select id="persons-select" name="persons_select" class="form-select"
                                         aria-label="Default select example" style="width: 225px;
                                         height: 35px;
                                         padding: 5px;">
-                                        <option selected>Select Numbers of Travelers
+                                        <option selected value="">Select Numbers of Travelers
                                         </option>
 
                                         <option value="1">One person sharing room(double or triple occupancy room)
@@ -309,10 +310,10 @@
                                     <div class="form-group">
 
                                     </div>
-                                    <select id="insurance-select" style="width: 225px;
+                                    <select name="insurance_select"  id="insurance-select" style="width: 225px;
                                 height: 35px;
                                 padding: 5px;">
-                                        <option value="volvo">-- Please Select--</option>
+                                        <option value="">-- Please Select--</option>
 
                                         <option value="1">1 Person</option>
 
@@ -335,7 +336,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
 
-                                        <select id="seat-select" style="width: 225px;
+                                        <select id="seat-select" name="seat_select" style="width: 225px;
                                     height: 35px;
                                     padding: 5px;">
                                             <option value="">-- Please Select--
@@ -371,7 +372,7 @@
 
                                             <div class="numbers-row">
                                                 <input type="text" value="0" id="addon-select1"
-                                                    class="qty2 form-control" name="addon-select1">
+                                                    class="qty2 form-control" name="addon_select1">
                                             </div>
                                         </div>
                                     </div>
@@ -386,7 +387,7 @@
 
                                             <div class="numbers-row">
                                                 <input type="text" value="0" id="addon-select2"
-                                                    class="qty2 form-control" name="addon-select2">
+                                                    class="qty2 form-control" name="addon_select2">
                                             </div>
                                         </div>
                                     </div>
@@ -396,9 +397,9 @@
 
 
 
-                            <a class="btn_full" href="#">Add to Cart</a>
+                            <button class="btn_full" type="submit">Add to Cart</button>
 
-                            <a class="btn_full" href="cart.html">Book & Proceed to checkout</a>
+                            <button class="btn_full book" type="button">Book & Proceed to checkout</button>
 
                         </div>
                     </form>
@@ -504,6 +505,7 @@
                     </div>
                     <form method="post" action="assets/review_tour.php" name="review_tour" id="review_tour">
                         <input name="tour_name" id="tour_name" type="hidden" value="Paris Arch de Triomphe Tour">
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -730,122 +732,12 @@
     }
 </script>
 
-
+<script>
+    $('.book').on('click', function(e){
+        e.preventDefault();
+        var formAction = "{{ url('/') }}/book";
+        $('#tocheckout').attr('action', formAction);
+        $("#tocheckout").submit();
+    });
+</script>
 </html>
-
-
-{{-- FOR THE BOOKING PAGE,
-
-    I WANT PEOPLE TO BE ABLE TO ADD ADD-ON THO THE BASIC PRICE FOR EXAMPLE <div class="">
-
-        BASIC PRICE HERE IS 750 FROM THE DB
-
-
-        IF THE USER WANT THEY CAN ADD ADDON
-
-        IF THEY DONT WANT THEY CAN PROCEED TO CART WITHOUT ADDING ANYTHING
-
-
-        IF THEY CLICK BOOK AND PROCEED TO CHECKPUT THAT MEANS THEY DONT WANT THE ADDON .
-
-
-
-        BUT MAYBE IF I AM TRAVELING WITH YOU, AND WE WANT TO GO TOHETHER , IT MEANS I SHOULD BE ABLE TO BOOK FOR YOU AND ME IN THE SAME BOOKING <div class="">
-
-            I CAN BOOK FIR YOU FIRST AND THEN AFTER I CLICK ON THE ADD TO CART, I WILL REMAIN ON THE SAME PAGE
-
-            I CAN THEN BOOK MY OWN TRIP AGAIN
-
-            SO IF I CHECK THE CART NOW I SHOULD HAVE 2 BOOKING THERE.
-
-            1 FOR YOU AND 1 FOR ME
-
-            DO YOU GET IT yeah OK
-
-            THE REASON IS, IMAGING IF WE ARE TRAVELING TOGETHER I CAN HAVE 2 KIDS AND MAYBE YOU DONT HAVE ANY..
-
-            ALSO MAYBE I WANT MASSAGE AND YOU DONT WANT ,
-
-            I SHOULD BE ABLE TO BOOK INDIVIDUALLY FOR MYSELF AND THEN ADD MASSAGE AFTER I ADD TO CART, I CAN THEN BOOK FOR YOU WITHOUT ADDING MASSAGE.
-
-
-            BUT IF I BOOK ME AND U TOGETHER, AT THE END OF THE DAY, ADMIN WILL NOT KNOW WHO HAVE THE MASSAGE ADON
-            <div class=""> ok what is the problem now. as u r ad</div>ding .
-
-
-
-            THE PROBLEM NOW IS, I AM GETTING CLOSE TO DEADLINE I SHOULD SHOW THEM THIS TIME TOMORROW, BUT I DONT KNOW HOW TO IMPLEMENT MOST THINGS, I AM SEEING YOUTUBE VIDEO FOR MOST OF THE THINGS AND ITS TAKING LOT OF TIME
-. ok  here        </div>
-here is the thing u r adding first for me then u adding for u it will be in same page right?
-
-
-IF I WANT 2 BOOKINGS , I CAN FIRST COMPLETE 1 BOOKING , CLICK ON ADD TO CART THEN THE ITEM WILL BE SAVED IN CART.
-
-AGAIN I CAN REPEAT THE SAME PROCESS TO BOOK THE SECOND ONE
-
-
-BUT IF I AM BOOKING JUST FOR 1 PERSON,  ONCE I FINISH ADDING ALL ADDON (IF I WANT) I CAN CLICK TO PROCEEED TO CHECKOUT AND DECIDE TO CREATE ACCOUNT ON CHECKOUT OR CHECKOUT AS A GUEST. ok so most of the is like ecommerce for cart YES. ok
-
-
-FOR EXAMPLE LET ME BOOK ONE AND EXPLAIN BETTER
-
-
-
-NOW I WANT TO SHOW BOOKING SCENERIO
-
-
-I AM TRAVELING WITH MY WIFE
-
-SO I WILL BOOK A FAMILY TRIP
-
-LETS SAY BASIC PRICE OF THE TOUR IS 4,200 FROM THE ADMIN
-
-ADDON FOR INSIRANCE IS 100 PER TRAVELLERS , SO I WILL OICK 2
-ADDON HERE IF WE DONT HAVE INSURANCE.
-
-SO BASCI FAIR OF 4200 + 100(ADDON X 2)
-
-INFANT: MAYBE WE HAVE 1 BABY, WE WILL CHOOSE ONE SO
-HE CAN GET TICKET
-
-SO THIS IS ALL WE WANT , I CAN CLICK ADD TO CART AND
-CHECKOUT FROM THERE.
-
-OR DIRECTLY CLICK ON PROCEED TO CHECKOUT .
-
-SCENERIO 2//
-
-
-IF I AM TRAVELLING WITH YOU AND YOU WANT BODY MASSAGE
-BUT I DONT WANT IT, (BUT WE ARE TRAVELING TOGETHER )
-
-I CAN BOOK LIKE THIS
-2 DOUBLE OCCUPANCY (2 OF US IN ONE ROOM )
-
-2 INSURANCE
-BODY MASSAGE WILL JUST BE 1 BECASUE I DONT WANT IT
-
-THATS ALL . I CAN PROCEED TO CART OR CHECKOUT NOW
-
-YOU GET IT. Yeah THANKS
-
-
-I THINK THAT IS ALL
-
-THEN IF THEY BOOK WE NEED TO SEND EMAIL TO THEN AND DIRECT THEM TO THANK YOU PAGE.
-
-NO DHASBOARD FOR USERS. ok so want my help to go through this process. NO
-
-I WANT YOU TO FINISH IT FOR ME, I WILL PAT THE COST FOR YOUR TROBLE OR ELETRICITY BECASUE IF I AM FOING INTERN HERE I WILL LEARN THE THINGS BY FORCE FOM THEM
-
-OTHERWISE IT IS HARD TO.L EARN ON MY OWN
-THEY TOLD IF I CANNOT COMPLETER THEY DONT ACCEPT ME FOT THE INTERNSHIP. :) i don't need elictricity bill as it's my country issu but i have work NO BOR, IF ELETRICITY IS NOT THERE HOW YOU CAN WORK
-
-ANYWAYS. I HAVE TO ENROOL WITH YOU LIKE I TOLD YOU BEFORE,
-
-I CAN LEARN FROM BASIC INSTEAD OF JUMOING STRAIGN TO LARAVEL. ok so there is so much to do aYnEd Su have 24 YhEour YES 24 HRS THIS TIME TOMORROW I HAVE TO SHOW WHAT I HAVE. ok listen i will do the process of doing booking and cart to checkout guest or user u have to do the than u page and redirects.
-
-OK I CAN DO THAT
-
-PUT THE PROJECT ON YOUR GIT SO I CAN CLONE AND WORK AT THE SAME TIME ALO,. sent me file  let me see what i can do now OK THANK YOU.
-    </div> --}}

@@ -117,7 +117,8 @@ Route::get('/updateproduct/{id}', [AdminController::class, 'updateproduct']);
 
 
 //CArt
-Route::get('/cart/{id}', [AdminController::class, 'cart']);
+Route::post('/cart', [AdminController::class, 'cart']);
+Route::post('/book', [AdminController::class, 'book']);
 
 
 //THIS ROUTE HANDLES THE DELETE UAE VISA PROCESS, WHERE INDIVIDUAL POSTING CAN BE DELETED BY ID
